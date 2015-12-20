@@ -1,6 +1,9 @@
 package ee.meriloo.tennis.scoring.match;
 
+import ee.meriloo.tennis.scoring.exceptions.GameException;
 import ee.meriloo.tennis.scoring.match.set.TennisSet;
+
+import java.util.List;
 
 /**
  * Created by Lauri on 20.12.2015.
@@ -9,13 +12,15 @@ public interface TennisMatch {
 
     void addNewSet(TennisSet tenniSet);
 
-    //void incrementSetScore(int index) throws GameException;
+    void incrementMatchScore(int index) throws GameException;
 
-    //List<Game> getGames();
+    List<TennisSet> getSets();
 
-    //boolean setHasEnded();
+    boolean matchHasEnded();
 
-    //int getSetScore(int index) throws GameException;
+    int getMatchScore(int index) throws GameException;
 
-    //int getWinnerIndex() throws GameException;
+    int getWinnerIndex() throws GameException;
+
+
 }
