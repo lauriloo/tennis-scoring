@@ -17,10 +17,30 @@ public class Main {
 
         ControlBoardDevice controlBoardDevice = new SimpleControlBoardDevice();
         DisplayDevice displayDevice = new SimpleDisplayDevice();
+
+        // add 2 new players
         controlBoardDevice.addPlayer("Mari");
         controlBoardDevice.addPlayer("Ibrahim Ibrahimovitch");
+
+        // get scoreboard then game is not started
+        System.out.println();
+        System.out.println("get scoreboard then game is not started:");
+        System.out.println();
         System.out.println(displayDevice.getScoreBoard());
+
+        // get scoreboard then game is started
+        System.out.println();
+        System.out.println("get scoreboard then game is started:");
+        System.out.println();
         controlBoardDevice.start();
+        System.out.println(displayDevice.getScoreBoard());
+
+        System.out.println();
+        // score payers randomly until match is ended
+        // after each scoring print out scoreboard
+        System.out.println();
+        System.out.println("score payers randomly until match is ended");
+        System.out.println("after each scoring print out scoreboard:");
         System.out.println();
         while(!displayDevice.isFinished()){
             int tmp = (int) ( Math.random() * 2);
@@ -28,9 +48,10 @@ public class Main {
             System.out.println(displayDevice.getScoreBoard());
         }
 
-        System.out.println("End of Match");
+        // match is ended, print out the winner
+        System.out.println("match is ended, print out the winner: ");
         System.out.println();
-        System.out.println("Winner is: " + displayDevice.getWinner());
+        System.out.println(displayDevice.getWinner());
 
     }
 }
