@@ -65,13 +65,4 @@ public class TwoPlayerGame implements Game {
     }
 
 
-
-    /*public static void main(String[] args){
-        Game gameScore = new TwoPlayerGame();
-        try {
-            System.out.println("First palyer score: "+gameScore.getPoints(0));
-        } catch (GameException e) {
-            e.printStackTrace();
-        }
-    }*/
 }

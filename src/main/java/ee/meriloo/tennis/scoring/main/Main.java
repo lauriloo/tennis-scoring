@@ -21,7 +21,6 @@ public class Main {
         controlBoardDevice.addPlayer("Ibrahim Ibrahimovitch");
         System.out.println(displayDevice.getScoreBoard());
         controlBoardDevice.start();
-        Match match = BaseMatch.getThisMatch();
         System.out.println();
         while(!displayDevice.isFinished()){
             int tmp = (int) ( Math.random() * 2);

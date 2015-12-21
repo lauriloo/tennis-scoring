@@ -26,9 +26,6 @@ public class AdvantageSet implements Set {
 
 
     public void score(int playerIndex) throws GameException {
-        /*if(setHasEnded()){
-            throw new GameException();
-        }*/
         if(games.size() == 0 || games.get(games.size()-1).gameHasEnded()){
             games.add(new TwoPlayerGame());
         }
@@ -36,10 +33,6 @@ public class AdvantageSet implements Set {
         if(games.get(games.size()-1).gameHasEnded()){
             incrementSetScore(games.get(games.size()-1).getWinnerIndex());
         }
-    }
-
-    public void addGameScore(Game game) {
-        games.add(game);
     }
 
     public void incrementSetScore(int index) throws GameException {

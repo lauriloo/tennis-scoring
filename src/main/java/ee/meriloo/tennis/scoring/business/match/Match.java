@@ -13,8 +13,6 @@ public interface Match {
 
     void score(int playerIndex) throws GameException;
 
-    void addNewSet(Set tenniSet);
-
     void incrementMatchScore(int index) throws GameException;
 
     List<Set> getSets();

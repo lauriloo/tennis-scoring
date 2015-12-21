@@ -12,8 +12,6 @@ public interface Set {
 
     void score(int playerIndex) throws GameException;
 
-    void addGameScore(Game game);
-
     void incrementSetScore(int index) throws GameException;
 
     List<Game> getGames();

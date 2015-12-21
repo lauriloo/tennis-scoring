@@ -25,7 +25,8 @@ public class SimpleControlBoardDevice implements ControlBoardDevice {
 
     public void start() throws GameException {
         if(canStartNewMach){
-            this.match = MatchBuilder.build();
+            this.match = MatchBuilder.buildBestOfThreeMatch();
+            //this.match = MatchBuilder.buildFiveSetsMatch();
             canStartNewMach = false;
         } else {
             throw new GameException();

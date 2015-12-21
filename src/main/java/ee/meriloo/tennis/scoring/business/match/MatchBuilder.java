@@ -22,9 +22,20 @@ public class MatchBuilder {
         }
     }
 
-    public static BestOfThreeMatch build() throws GameException {
+    public static BestOfThreeMatch buildBestOfThreeMatch() throws GameException {
         if(players.size() == MAX_PLAYERS){
             BestOfThreeMatch newMatch = new BestOfThreeMatch(players);
+            players = new LinkedList<Player>();
+            return newMatch;
+        } else {
+            throw new GameException();
+        }
+
+    }
+
+    public static FiveSetsMatch buildFiveSetsMatch() throws GameException {
+        if(players.size() == MAX_PLAYERS){
+            FiveSetsMatch newMatch = new FiveSetsMatch(players);
             players = new LinkedList<Player>();
             return newMatch;
         } else {

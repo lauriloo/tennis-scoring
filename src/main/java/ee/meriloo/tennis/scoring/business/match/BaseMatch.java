@@ -36,10 +36,6 @@ public abstract class BaseMatch implements Match {
         }
     }
 
-    public void addNewSet(Set tenniSet) {
-        sets.add(tenniSet);
-    }
-
     public void incrementMatchScore(int index) throws GameException {
         if(!matchHasEnded()){
             if(index == 0){
