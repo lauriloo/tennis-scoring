@@ -1,9 +1,9 @@
-package ee.meriloo.tennis.scoring.match;
+package ee.meriloo.tennis.scoring.business.match;
 
-import ee.meriloo.tennis.scoring.exceptions.GameException;
-import ee.meriloo.tennis.scoring.match.game.Game;
-import ee.meriloo.tennis.scoring.match.game.TwoPlayerGame;
-import ee.meriloo.tennis.scoring.match.set.TennisSet;
+import ee.meriloo.tennis.scoring.business.exceptions.GameException;
+import ee.meriloo.tennis.scoring.business.player.Player;
+import ee.meriloo.tennis.scoring.business.set.AdvantageSet;
+import ee.meriloo.tennis.scoring.business.set.Set;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,25 +11,35 @@ import java.util.List;
 /**
  * Created by Lauri on 20.12.2015.
  */
-public abstract class BaseMatch implements TennisMatch {
+public abstract class BaseMatch implements Match {
 
 
     protected final List<Player> players;
-    protected List<TennisSet> tennisSets;
-    protected boolean matchHasEnded = false;
+    protected List<Set> sets;
+    //protected boolean matchHasEnded = false;
 
     protected int firstPlayerSetsWon;
     protected int secondPlayerSetsWon;
-    //protected Game currentGame;
-
     BaseMatch(List<Player> players) {
         this.players = players;
-        this.tennisSets = new ArrayList<TennisSet>();
-        //this.currentGame = new TwoPlayerGame();
+        this.sets = new ArrayList<Set>();
     }
 
-    public void addNewSet(TennisSet tenniSet) {
-        tennisSets.add(tenniSet);
+    public void score(int playerIndex) throws GameException {
+        /*if(matchHasEnded()){
+            throw new GameException();
+        }*/
+        if(sets.size() == 0 || sets.get(sets.size()-1).setHasEnded()){
+            sets.add(new AdvantageSet());
+        }
+        sets.get(sets.size()-1).score(playerIndex);
+        if(sets.get(sets.size()-1).setHasEnded()){
+            incrementMatchScore(sets.get(sets.size()-1).getWinnerIndex());
+        }
+    }
+
+    public void addNewSet(Set tenniSet) {
+        sets.add(tenniSet);
     }
 
     public void incrementMatchScore(int index) throws GameException {
@@ -47,8 +57,8 @@ public abstract class BaseMatch implements TennisMatch {
         }
     }
 
-    public List<TennisSet> getSets() {
-        return tennisSets;
+    public List<Set> getSets() {
+        return sets;
     }
 
 
@@ -78,8 +88,8 @@ public abstract class BaseMatch implements TennisMatch {
         return players;
     }
 
-    public List<TennisSet> getTennisSets() {
-        return tennisSets;
+    public List<Set> getTennisSets() {
+        return sets;
     }
 
     public boolean isFinished() {

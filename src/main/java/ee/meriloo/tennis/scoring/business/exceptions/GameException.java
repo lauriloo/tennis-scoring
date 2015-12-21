@@ -1,4 +1,4 @@
-package ee.meriloo.tennis.scoring.exceptions;
+package ee.meriloo.tennis.scoring.business.exceptions;
 
 /**
  * Created by Lauri on 18.12.2015.

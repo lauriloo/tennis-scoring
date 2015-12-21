@@ -1,6 +1,6 @@
 package ee.meriloo.tennis.scoring.input;
 
-import ee.meriloo.tennis.scoring.exceptions.GameException;
+import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 
 /**
  * Created by Lauri on 20.12.2015.

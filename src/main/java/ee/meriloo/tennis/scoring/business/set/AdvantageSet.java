@@ -1,8 +1,9 @@
-package ee.meriloo.tennis.scoring.match.set;
+package ee.meriloo.tennis.scoring.business.set;
 
 
-import ee.meriloo.tennis.scoring.exceptions.GameException;
-import ee.meriloo.tennis.scoring.match.game.Game;
+import ee.meriloo.tennis.scoring.business.exceptions.GameException;
+import ee.meriloo.tennis.scoring.business.game.Game;
+import ee.meriloo.tennis.scoring.business.game.TwoPlayerGame;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 /**
  * Created by Lauri on 20.12.2015.
  */
-public class AdvantageSet implements TennisSet {
+public class AdvantageSet implements Set {
 
     public static final int MIN_GAMES_TO_WIN = 6;
     public static final int MIN_GAMES_LEADE_TO_WIN = 2;
@@ -23,6 +24,19 @@ public class AdvantageSet implements TennisSet {
         this.games = new ArrayList<Game>();
     }
 
+
+    public void score(int playerIndex) throws GameException {
+        /*if(setHasEnded()){
+            throw new GameException();
+        }*/
+        if(games.size() == 0 || games.get(games.size()-1).gameHasEnded()){
+            games.add(new TwoPlayerGame());
+        }
+        games.get(games.size()-1).score(playerIndex);
+        if(games.get(games.size()-1).gameHasEnded()){
+            incrementSetScore(games.get(games.size()-1).getWinnerIndex());
+        }
+    }
 
     public void addGameScore(Game game) {
         games.add(game);

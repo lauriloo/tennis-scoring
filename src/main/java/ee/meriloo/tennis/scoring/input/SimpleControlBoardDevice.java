@@ -1,11 +1,9 @@
 package ee.meriloo.tennis.scoring.input;
 
-import ee.meriloo.tennis.scoring.exceptions.GameException;
-import ee.meriloo.tennis.scoring.match.BestOfThreeMatch;
-import ee.meriloo.tennis.scoring.match.MatchBuilder;
-import ee.meriloo.tennis.scoring.match.Player;
-import ee.meriloo.tennis.scoring.matchcontroller.MatchController;
-import ee.meriloo.tennis.scoring.matchcontroller.SimpleMatchController;
+import ee.meriloo.tennis.scoring.business.exceptions.GameException;
+import ee.meriloo.tennis.scoring.business.match.Match;
+import ee.meriloo.tennis.scoring.business.match.MatchBuilder;
+import ee.meriloo.tennis.scoring.business.player.Player;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -13,7 +11,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class SimpleControlBoardDevice implements ControlBoardDevice {
 
-    private MatchController matchController = new SimpleMatchController();
+    private Match match;
     private boolean canStartNewMach = true;
 
 
@@ -27,8 +25,7 @@ public class SimpleControlBoardDevice implements ControlBoardDevice {
 
     public void start() throws GameException {
         if(canStartNewMach){
-            BestOfThreeMatch match = MatchBuilder.build();
-            matchController.setMatch(match);
+            this.match = MatchBuilder.build();
             canStartNewMach = false;
         } else {
             throw new GameException();
@@ -36,7 +33,10 @@ public class SimpleControlBoardDevice implements ControlBoardDevice {
     }
 
     public void score(int playerIndex) throws GameException {
-        matchController.score(playerIndex);
+        if(match.matchHasEnded()){
+            throw new GameException();
+        }
+        match.score(playerIndex);
     }
 
 

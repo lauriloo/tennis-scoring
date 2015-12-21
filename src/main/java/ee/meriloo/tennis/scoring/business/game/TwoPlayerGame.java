@@ -1,6 +1,6 @@
-package ee.meriloo.tennis.scoring.match.game;
+package ee.meriloo.tennis.scoring.business.game;
 
-import ee.meriloo.tennis.scoring.exceptions.GameException;
+import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 
 /**
  * Created by Lauri on 20.12.2015.
@@ -14,7 +14,11 @@ public class TwoPlayerGame implements Game {
     private int secondPlayerPoints;
 
 
-    public void addAPoint(int index) throws GameException {
+    public void score(int playerIndex) throws GameException {
+        incrementMatchScore(playerIndex);
+    }
+
+    public void incrementMatchScore(int index) throws GameException {
         if(!gameHasEnded()){
             if(index == 0){
                 ++firstPlayerPoints;
@@ -59,6 +63,8 @@ public class TwoPlayerGame implements Game {
             throw new GameException();
         }
     }
+
+
 
     /*public static void main(String[] args){
         Game gameScore = new TwoPlayerGame();
