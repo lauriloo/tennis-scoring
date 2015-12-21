@@ -1,6 +1,7 @@
 package ee.meriloo.tennis.scoring.business.match;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
+import ee.meriloo.tennis.scoring.business.player.Player;
 import ee.meriloo.tennis.scoring.business.set.Set;
 
 import java.util.List;
@@ -22,7 +23,9 @@ public interface Match {
 
     int getMatchScore(int index) throws GameException;
 
-    int getWinnerIndex() throws GameException;
+    String getWinner() throws GameException;
+
+    List<Player> getPlayers();
 
 
 }

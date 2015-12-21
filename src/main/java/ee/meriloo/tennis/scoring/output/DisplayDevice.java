@@ -1,5 +1,7 @@
 package ee.meriloo.tennis.scoring.output;
 
+import ee.meriloo.tennis.scoring.business.exceptions.GameException;
+
 /**
  * Created by Lauri on 18.12.2015.
  */
@@ -14,7 +16,7 @@ public interface DisplayDevice {
      * | Person 0 name | 15       |                   | 1              |
      * | Person 1 name | 30       |                   | 2              |
      */
-    String getScoreBoard();
+    String getScoreBoard() throws GameException;
 
     /**
      * Method that display device is polling. When game is not finished, scoreboard is shown, otherwise getWinner method
@@ -29,6 +31,6 @@ public interface DisplayDevice {
      *
      * @return Winners name
      */
-    String getWinner();
+    String getWinner() throws GameException;
 
 }

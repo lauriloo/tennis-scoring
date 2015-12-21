@@ -26,11 +26,5 @@ public class BestOfThreeMatch extends BaseMatch {
         return false;
     }
 
-        /*if (Math.abs((firstPlayerSetsWon-secondPlayerSetsWon)) < MIN_SETS_LEADE_TO_WIN){
-            return false;
-        } else if (firstPlayerSetsWon >= MIN_SETS_TO_WIN || secondPlayerSetsWon >= MIN_SETS_TO_WIN){
-            return true;
-        }
-        return false;
-    }*/
+
 }

@@ -13,22 +13,20 @@ import java.util.List;
  */
 public abstract class BaseMatch implements Match {
 
+    private static Match thisMatch;
 
     protected final List<Player> players;
     protected List<Set> sets;
-    //protected boolean matchHasEnded = false;
 
     protected int firstPlayerSetsWon;
     protected int secondPlayerSetsWon;
     BaseMatch(List<Player> players) {
         this.players = players;
         this.sets = new ArrayList<Set>();
+        thisMatch = this;
     }
 
     public void score(int playerIndex) throws GameException {
-        /*if(matchHasEnded()){
-            throw new GameException();
-        }*/
         if(sets.size() == 0 || sets.get(sets.size()-1).setHasEnded()){
             sets.add(new AdvantageSet());
         }
@@ -72,31 +70,27 @@ public abstract class BaseMatch implements Match {
         }
     }
 
-    public int getWinnerIndex() throws GameException {
+    public String getWinner() throws GameException {
         if(matchHasEnded()){
             if (firstPlayerSetsWon > secondPlayerSetsWon){
-                return 0;
+                return getPlayers().get(0).getName();
             } else {
-                return 1;
+                return getPlayers().get(1).getName();
             }
         } else {
             throw new GameException();
         }
     }
 
-    /*public List<Player> getPlayers() {
+    public static Match getThisMatch() {
+        return thisMatch;
+    }
+
+    public static void resetMatch(){
+        thisMatch = null;
+    }
+
+    public List<Player> getPlayers() {
         return players;
     }
-
-    public List<Set> getTennisSets() {
-        return sets;
-    }
-
-    public boolean isFinished() {
-        return finished;
-    }
-
-    public void setFinished(boolean finished) {
-        this.finished = finished;
-    }*/
 }
