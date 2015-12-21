@@ -20,6 +20,7 @@ public abstract class BaseMatch implements Match {
 
     protected int firstPlayerSetsWon;
     protected int secondPlayerSetsWon;
+    protected static Object monitor = new Object();
     BaseMatch(List<Player> players) {
         this.players = players;
         this.sets = new ArrayList<Set>();
@@ -27,66 +28,93 @@ public abstract class BaseMatch implements Match {
     }
 
     public void score(int playerIndex) throws GameException {
-        if(sets.size() == 0 || sets.get(sets.size()-1).setHasEnded()){
-            sets.add(new AdvantageSet());
-        }
-        sets.get(sets.size()-1).score(playerIndex);
-        if(sets.get(sets.size()-1).setHasEnded()){
-            incrementMatchScore(sets.get(sets.size()-1).getWinnerIndex());
+        synchronized(monitor)
+        {
+            if(sets.size() == 0 || sets.get(sets.size()-1).setHasEnded()){
+                sets.add(new AdvantageSet());
+            }
+            sets.get(sets.size()-1).score(playerIndex);
+            if(sets.get(sets.size()-1).setHasEnded()){
+                incrementMatchScore(sets.get(sets.size()-1).getWinnerIndex());
+            }
         }
     }
 
     public void incrementMatchScore(int index) throws GameException {
-        if(!matchHasEnded()){
-            if(index == 0){
-                ++firstPlayerSetsWon;
-            } else if(index == 1){
-                ++secondPlayerSetsWon;
+        synchronized(monitor)
+        {
+            if(!matchHasEnded()){
+                if(index == 0){
+                    ++firstPlayerSetsWon;
+                } else if(index == 1){
+                    ++secondPlayerSetsWon;
+                } else {
+                    throw new GameException();
+                }
+
             } else {
                 throw new GameException();
             }
-
-        } else {
-            throw new GameException();
         }
+
     }
 
     public List<Set> getSets() {
-        return sets;
+        synchronized(monitor)
+        {
+            return sets;
+        }
     }
 
 
     public int getMatchScore(int index) throws GameException {
-        if(index == 0){
-            return firstPlayerSetsWon;
-        } else if(index == 1){
-            return secondPlayerSetsWon;
-        } else {
-            throw new GameException();
+        synchronized(monitor)
+        {
+            if(index == 0){
+                return firstPlayerSetsWon;
+            } else if(index == 1){
+                return secondPlayerSetsWon;
+            } else {
+                throw new GameException();
+            }
         }
+
     }
 
     public String getWinner() throws GameException {
-        if(matchHasEnded()){
-            if (firstPlayerSetsWon > secondPlayerSetsWon){
-                return getPlayers().get(0).getName();
+        synchronized(monitor)
+        {
+            if(matchHasEnded()){
+                if (firstPlayerSetsWon > secondPlayerSetsWon){
+                    return getPlayers().get(0).getName();
+                } else {
+                    return getPlayers().get(1).getName();
+                }
             } else {
-                return getPlayers().get(1).getName();
+                throw new GameException();
             }
-        } else {
-            throw new GameException();
         }
+
     }
 
     public static Match getThisMatch() {
-        return thisMatch;
+        synchronized(monitor)
+        {
+            return thisMatch;
+        }
     }
 
     public static void resetMatch(){
-        thisMatch = null;
+        synchronized(monitor)
+        {
+            thisMatch = null;
+        }
     }
 
     public List<Player> getPlayers() {
-        return players;
+        synchronized(monitor)
+        {
+            return players;
+        }
     }
 }

@@ -17,10 +17,14 @@ public class FiveSetsMatch extends BaseMatch {
     }
 
     public boolean matchHasEnded() {
-        if (firstPlayerSetsWon == MIN_SETS_TO_WIN || secondPlayerSetsWon == MIN_SETS_TO_WIN ){
-            return true;
-        } else {
-            return false;
+        synchronized(monitor)
+        {
+            if (firstPlayerSetsWon == MIN_SETS_TO_WIN || secondPlayerSetsWon == MIN_SETS_TO_WIN ){
+                return true;
+            } else {
+                return false;
+            }
         }
+
     }
 }

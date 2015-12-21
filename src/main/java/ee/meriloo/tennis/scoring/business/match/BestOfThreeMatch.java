@@ -18,12 +18,16 @@ public class BestOfThreeMatch extends BaseMatch {
     }
 
     public boolean matchHasEnded() {
-        if (Math.abs((firstPlayerSetsWon-secondPlayerSetsWon)) == MIN_SETS_LEADE_TO_WIN){
-            return true;
-        } else if ((firstPlayerSetsWon + secondPlayerSetsWon) == MAX_SETS){
-            return true;
+        synchronized(monitor)
+        {
+            if (Math.abs((firstPlayerSetsWon-secondPlayerSetsWon)) == MIN_SETS_LEADE_TO_WIN){
+                return true;
+            } else if ((firstPlayerSetsWon + secondPlayerSetsWon) == MAX_SETS){
+                return true;
+            }
+            return false;
         }
-        return false;
+
     }
 
 
