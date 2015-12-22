@@ -46,9 +46,5 @@ public class SimpleControlBoardDeviceTest {
 
 
 
-    @Test
-    public void testScore() throws Exception {
-
-    }
 
 }
