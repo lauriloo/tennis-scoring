@@ -1,6 +1,9 @@
 package ee.meriloo.tennis.scoring.output;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
+import ee.meriloo.tennis.scoring.business.match.Match;
+
+import java.util.Map;
 
 /**
  * Created by Lauri on 18.12.2015.
@@ -32,5 +35,7 @@ public interface DisplayDevice {
      * @return Winners name
      */
     String getWinner() throws GameException;
+
+    Map<String, String> getDisplayData(Match match) throws GameException;
 
 }

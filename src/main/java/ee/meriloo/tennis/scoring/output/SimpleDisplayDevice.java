@@ -20,6 +20,12 @@ public class SimpleDisplayDevice implements DisplayDevice {
     public static final String SPACE = " ";
     public static final String PIPE = "|";
     public static final String LINEBREAK = "\n";
+    public static final String NAME = "Name";
+    public static final String SCORE = "Score";
+    public static final String GAMESWON = "Games won";
+    public static final String SETSWON = "Sets won";
+    public static final String FIRSTPLAYER = "Player 0";
+    public static final String SECONDPLAYER = "Player 1";
     public static final String FIRSTPLAYERSCORE = "firstPlayerScore";
     public static final String SECONDPLAYERSCORE = "secondPlayerScore";
     public static final String FIRSTPLAYERGAMESWON = "firstPlayerGamesWon";
@@ -28,12 +34,7 @@ public class SimpleDisplayDevice implements DisplayDevice {
     public static final String SECONDPLAYERSETSWON = "secondPlayerSetsWon";
     public static final String FIRSTPLAYERNAME = "firstPlayerName";
     public static final String SECONDPLAYERNAME = "secondPlayerName";
-    public static final String NAME = "Name";
-    public static final String SCORE = "Score";
-    public static final String GAMESWON = "Games won";
-    public static final String SETSWON = "Sets won";
-    public static final String FIRSTPLAYER = "Player 0";
-    public static final String SECONDPLAYER = "Player 1";
+
 
     public String getScoreBoard() throws GameException {
         return composeScoreBoard(BaseMatch.getThisMatch());
@@ -83,7 +84,7 @@ public class SimpleDisplayDevice implements DisplayDevice {
 
 
 
-    private Map<String, String> getDisplayData(Match match) throws GameException {
+    public Map<String, String> getDisplayData(Match match) throws GameException {
 
         Map<String,String> dataMap;
         int firstScore = 0;
@@ -105,8 +106,15 @@ public class SimpleDisplayDevice implements DisplayDevice {
                     Game lastGame = lastSet.getGames().get(lastSet.getGames().size() - 1);
                     firstScore = lastGame.getPoints(0);
                     secondScore = lastGame.getPoints(1);
-                    firstPlayerGamesWon = lastSet.getSetScore(0);
-                    secondPlayerGamesWon = lastSet.getSetScore(1);
+                    //firstPlayerGamesWon = lastSet.getSetScore(0);
+                    //secondPlayerGamesWon = lastSet.getSetScore(1);
+                    if(lastSet.setHasEnded()){
+                        firstPlayerGamesWon = 0;
+                        secondPlayerGamesWon = 0;
+                    } else {
+                        firstPlayerGamesWon = lastSet.getSetScore(0);
+                        secondPlayerGamesWon = lastSet.getSetScore(1);
+                    }
                     firstPlayerSetsWon = match.getMatchScore(0);
                     secondPlayerSetsWon = match.getMatchScore(1);
                 }

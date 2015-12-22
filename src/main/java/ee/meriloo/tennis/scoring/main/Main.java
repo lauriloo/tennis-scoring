@@ -25,7 +25,7 @@ public class Main {
         System.out.println(StringUtils.upperCase("add 2 new players"));
         System.out.println("------------------------------------------------------------------------");
         System.out.println();
-        controlBoardDevice.addPlayer("Mari Maasikas");
+        controlBoardDevice.addPlayer("Mari");
         controlBoardDevice.addPlayer("Ibrahim Ibrahimovitch");
 
         // get scoreboard then game is not started
