@@ -16,7 +16,7 @@ public class FiveSetsMatch extends BaseMatch {
         super(players);
     }
 
-    public boolean matchHasEnded() {
+    public boolean hasEnded() {
         synchronized(monitor)
         {
             if (firstPlayerSetsWon == MIN_SETS_TO_WIN || secondPlayerSetsWon == MIN_SETS_TO_WIN ){

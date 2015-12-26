@@ -41,7 +41,7 @@ public class SimpleDisplayDevice implements DisplayDevice {
     }
 
     public boolean isFinished() {
-        return BaseMatch.getThisMatch().matchHasEnded();
+        return BaseMatch.getThisMatch().hasEnded();
     }
 
     public String getWinner() throws GameException {
@@ -104,19 +104,19 @@ public class SimpleDisplayDevice implements DisplayDevice {
                 Set lastSet = match.getSets().get(match.getSets().size() - 1);
                 if (lastSet.getGames().size() > 0) {
                     Game lastGame = lastSet.getGames().get(lastSet.getGames().size() - 1);
-                    firstScore = lastGame.getPoints(0);
-                    secondScore = lastGame.getPoints(1);
-                    //firstPlayerGamesWon = lastSet.getSetScore(0);
-                    //secondPlayerGamesWon = lastSet.getSetScore(1);
-                    if(lastSet.setHasEnded()){
+                    firstScore = lastGame.getScore(0);
+                    secondScore = lastGame.getScore(1);
+                    //firstPlayerGamesWon = lastSet.getScore(0);
+                    //secondPlayerGamesWon = lastSet.getScore(1);
+                    if(lastSet.hasEnded()){
                         firstPlayerGamesWon = 0;
                         secondPlayerGamesWon = 0;
                     } else {
-                        firstPlayerGamesWon = lastSet.getSetScore(0);
-                        secondPlayerGamesWon = lastSet.getSetScore(1);
+                        firstPlayerGamesWon = lastSet.getScore(0);
+                        secondPlayerGamesWon = lastSet.getScore(1);
                     }
-                    firstPlayerSetsWon = match.getMatchScore(0);
-                    secondPlayerSetsWon = match.getMatchScore(1);
+                    firstPlayerSetsWon = match.getScore(0);
+                    secondPlayerSetsWon = match.getScore(1);
                 }
             }
         }

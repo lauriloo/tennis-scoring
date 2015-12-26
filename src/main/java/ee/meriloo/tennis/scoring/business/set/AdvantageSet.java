@@ -26,17 +26,17 @@ public class AdvantageSet implements Set {
 
 
     public void score(int playerIndex) throws GameException {
-        if(games.size() == 0 || games.get(games.size()-1).gameHasEnded()){
+        if(games.size() == 0 || games.get(games.size()-1).hasEnded()){
             games.add(new TwoPlayerGame());
         }
         games.get(games.size()-1).score(playerIndex);
-        if(games.get(games.size()-1).gameHasEnded()){
-            incrementSetScore(games.get(games.size()-1).getWinnerIndex());
+        if(games.get(games.size()-1).hasEnded()){
+            incrementScore(games.get(games.size()-1).getWinnerIndex());
         }
     }
 
-    public void incrementSetScore(int index) throws GameException {
-        if(!setHasEnded()){
+    public void incrementScore(int index) throws GameException {
+        if(!hasEnded()){
             if(index == 0){
                 ++firstPlayerSetScore;
             } else if(index == 1){
@@ -54,7 +54,7 @@ public class AdvantageSet implements Set {
         return games;
     }
 
-    public boolean setHasEnded() {
+    public boolean hasEnded() {
         if (Math.abs((firstPlayerSetScore-secondPlayerSetScore)) < MIN_GAMES_LEADE_TO_WIN){
             return false;
         } else if (firstPlayerSetScore >= MIN_GAMES_TO_WIN || secondPlayerSetScore >= MIN_GAMES_TO_WIN){
@@ -63,7 +63,7 @@ public class AdvantageSet implements Set {
         return false;
     }
 
-    public int getSetScore(int index) throws GameException {
+    public int getScore(int index) throws GameException {
         if(index == 0){
             return firstPlayerSetScore;
         } else if(index == 1){
@@ -74,7 +74,7 @@ public class AdvantageSet implements Set {
     }
 
     public int getWinnerIndex() throws GameException {
-        if(setHasEnded()){
+        if(hasEnded()){
             if (firstPlayerSetScore > secondPlayerSetScore){
                 return 0;
             } else {

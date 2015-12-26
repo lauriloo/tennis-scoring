@@ -34,7 +34,7 @@ public class SimpleControlBoardDevice implements ControlBoardDevice {
     }
 
     public void score(int playerIndex) throws GameException {
-        if(match.matchHasEnded()){
+        if(match.hasEnded()){
             throw new GameException();
         }
         match.score(playerIndex);

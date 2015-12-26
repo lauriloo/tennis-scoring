@@ -15,11 +15,11 @@ public class TwoPlayerGame implements Game {
 
 
     public void score(int playerIndex) throws GameException {
-        incrementMatchScore(playerIndex);
+        incrementScore(playerIndex);
     }
 
-    public void incrementMatchScore(int index) throws GameException {
-        if(!gameHasEnded()){
+    public void incrementScore(int index) throws GameException {
+        if(!hasEnded()){
             if(index == 0){
                 ++firstPlayerPoints;
             } else if(index == 1){
@@ -33,7 +33,7 @@ public class TwoPlayerGame implements Game {
         }
     }
 
-    public boolean gameHasEnded() {
+    public boolean hasEnded() {
         if (Math.abs((firstPlayerPoints-secondPlayerPoints)) < MIN_POINTS_LEADE_TO_WIN){
             return false;
         } else if (firstPlayerPoints >= MIN_POINTS_TO_WIN || secondPlayerPoints >= MIN_POINTS_TO_WIN){
@@ -42,7 +42,7 @@ public class TwoPlayerGame implements Game {
             return false;
     }
 
-    public int getPoints(int index) throws GameException {
+    public int getScore(int index) throws GameException {
         if(index == 0){
             return firstPlayerPoints;
         } else if(index == 1){
@@ -53,7 +53,7 @@ public class TwoPlayerGame implements Game {
     }
 
     public int getWinnerIndex() throws GameException {
-        if(gameHasEnded()){
+        if(hasEnded()){
             if (firstPlayerPoints > secondPlayerPoints){
                 return 0;
             } else {

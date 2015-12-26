@@ -30,20 +30,20 @@ public abstract class BaseMatch implements Match {
     public void score(int playerIndex) throws GameException {
         synchronized(monitor)
         {
-            if(sets.size() == 0 || sets.get(sets.size()-1).setHasEnded()){
+            if(sets.size() == 0 || sets.get(sets.size()-1).hasEnded()){
                 sets.add(new AdvantageSet());
             }
             sets.get(sets.size()-1).score(playerIndex);
-            if(sets.get(sets.size()-1).setHasEnded()){
-                incrementMatchScore(sets.get(sets.size()-1).getWinnerIndex());
+            if(sets.get(sets.size()-1).hasEnded()){
+                incrementScore(sets.get(sets.size()-1).getWinnerIndex());
             }
         }
     }
 
-    public void incrementMatchScore(int index) throws GameException {
+    public void incrementScore(int index) throws GameException {
         synchronized(monitor)
         {
-            if(!matchHasEnded()){
+            if(!hasEnded()){
                 if(index == 0){
                     ++firstPlayerSetsWon;
                 } else if(index == 1){
@@ -67,7 +67,7 @@ public abstract class BaseMatch implements Match {
     }
 
 
-    public int getMatchScore(int index) throws GameException {
+    public int getScore(int index) throws GameException {
         synchronized(monitor)
         {
             if(index == 0){
@@ -81,18 +81,25 @@ public abstract class BaseMatch implements Match {
 
     }
 
-    public String getWinner() throws GameException {
+    public int getWinnerIndex() throws GameException {
         synchronized(monitor)
         {
-            if(matchHasEnded()){
+            if(hasEnded()){
                 if (firstPlayerSetsWon > secondPlayerSetsWon){
-                    return getPlayers().get(0).getName();
+                    return 0;
                 } else {
-                    return getPlayers().get(1).getName();
+                    return 1;
                 }
             } else {
                 throw new GameException();
             }
+        }
+    }
+
+    public String getWinner() throws GameException {
+        synchronized(monitor)
+        {
+            return getPlayers().get(getWinnerIndex()).getName();
         }
 
     }
@@ -117,4 +124,6 @@ public abstract class BaseMatch implements Match {
             return players;
         }
     }
+
+
 }

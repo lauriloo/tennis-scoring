@@ -9,11 +9,11 @@ public interface Game {
 
     void score(int playerIndex) throws GameException;
 
-    void incrementMatchScore(int index) throws GameException;
+    void incrementScore(int index) throws GameException;
 
-    int getPoints(int index) throws GameException;
+    int getScore(int index) throws GameException;
 
-    boolean gameHasEnded();
+    boolean hasEnded();
 
     int getWinnerIndex() throws GameException;
 

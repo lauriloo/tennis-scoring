@@ -8,18 +8,8 @@ import java.util.List;
 /**
  * Created by Lauri on 20.12.2015.
  */
-public interface Set {
-
-    void score(int playerIndex) throws GameException;
-
-    void incrementSetScore(int index) throws GameException;
+public interface Set extends Game {
 
     List<Game> getGames();
-
-    boolean setHasEnded();
-
-    int getSetScore(int index) throws GameException;
-
-    int getWinnerIndex() throws GameException;
 
 }
