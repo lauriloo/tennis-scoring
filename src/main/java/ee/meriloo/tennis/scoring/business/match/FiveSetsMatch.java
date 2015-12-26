@@ -19,7 +19,7 @@ public class FiveSetsMatch extends BaseMatch {
     public boolean hasEnded() {
         synchronized(monitor)
         {
-            if (firstPlayerSetsWon == MIN_SETS_TO_WIN || secondPlayerSetsWon == MIN_SETS_TO_WIN ){
+            if (getFirstPlayerScore() == MIN_SETS_TO_WIN || getSecondPlayerScore() == MIN_SETS_TO_WIN ){
                 return true;
             } else {
                 return false;

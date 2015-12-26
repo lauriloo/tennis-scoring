@@ -1,4 +1,4 @@
-package ee.meriloo.tennis.scoring.business.game;
+package ee.meriloo.tennis.scoring.business.game.abstractgame;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 

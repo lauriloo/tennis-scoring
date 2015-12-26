@@ -1,6 +1,5 @@
 package ee.meriloo.tennis.scoring.business.match;
 
-import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 import ee.meriloo.tennis.scoring.business.player.Player;
 
 import java.util.List;
@@ -21,9 +20,9 @@ public class BestOfThreeMatch extends BaseMatch {
     public boolean hasEnded() {
         synchronized(monitor)
         {
-            if (Math.abs((firstPlayerSetsWon-secondPlayerSetsWon)) == MIN_SETS_LEADE_TO_WIN){
+            if (Math.abs((getFirstPlayerScore() - getSecondPlayerScore())) == MIN_SETS_LEADE_TO_WIN){
                 return true;
-            } else if ((firstPlayerSetsWon + secondPlayerSetsWon) == MAX_SETS){
+            } else if ((getFirstPlayerScore() + getSecondPlayerScore()) == MAX_SETS){
                 return true;
             }
             return false;

@@ -1,6 +1,7 @@
 package ee.meriloo.tennis.scoring.business.match;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
+import ee.meriloo.tennis.scoring.business.game.abstractgame.AbstractGame;
 import ee.meriloo.tennis.scoring.business.player.Player;
 import ee.meriloo.tennis.scoring.business.set.AdvantageSet;
 import ee.meriloo.tennis.scoring.business.set.Set;
@@ -11,15 +12,13 @@ import java.util.List;
 /**
  * Created by Lauri on 20.12.2015.
  */
-public abstract class BaseMatch implements Match {
+public abstract class BaseMatch extends AbstractGame implements Match {
 
     private static Match thisMatch;
 
     protected final List<Player> players;
     protected List<Set> sets;
 
-    protected int firstPlayerSetsWon;
-    protected int secondPlayerSetsWon;
     protected static Object monitor = new Object();
     BaseMatch(List<Player> players) {
         this.players = players;
@@ -43,18 +42,7 @@ public abstract class BaseMatch implements Match {
     public void incrementScore(int index) throws GameException {
         synchronized(monitor)
         {
-            if(!hasEnded()){
-                if(index == 0){
-                    ++firstPlayerSetsWon;
-                } else if(index == 1){
-                    ++secondPlayerSetsWon;
-                } else {
-                    throw new GameException();
-                }
-
-            } else {
-                throw new GameException();
-            }
+            super.incrementScore(index);
         }
 
     }
@@ -70,13 +58,7 @@ public abstract class BaseMatch implements Match {
     public int getScore(int index) throws GameException {
         synchronized(monitor)
         {
-            if(index == 0){
-                return firstPlayerSetsWon;
-            } else if(index == 1){
-                return secondPlayerSetsWon;
-            } else {
-                throw new GameException();
-            }
+            return super.getScore(index);
         }
 
     }
@@ -84,15 +66,7 @@ public abstract class BaseMatch implements Match {
     public int getWinnerIndex() throws GameException {
         synchronized(monitor)
         {
-            if(hasEnded()){
-                if (firstPlayerSetsWon > secondPlayerSetsWon){
-                    return 0;
-                } else {
-                    return 1;
-                }
-            } else {
-                throw new GameException();
-            }
+            return super.getWinnerIndex();
         }
     }
 

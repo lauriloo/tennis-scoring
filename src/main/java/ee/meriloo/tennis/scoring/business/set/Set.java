@@ -1,7 +1,6 @@
 package ee.meriloo.tennis.scoring.business.set;
 
-import ee.meriloo.tennis.scoring.business.exceptions.GameException;
-import ee.meriloo.tennis.scoring.business.game.Game;
+import ee.meriloo.tennis.scoring.business.game.abstractgame.Game;
 
 import java.util.List;
 
