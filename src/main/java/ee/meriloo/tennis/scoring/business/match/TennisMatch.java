@@ -19,7 +19,6 @@ public class TennisMatch extends AbstractPlay implements Match {
 
     private final PlayType gameType;
     private final PlayType setType;
-    private final PlayType matchType;
 
     protected static Object monitor = new Object();
 
@@ -27,23 +26,10 @@ public class TennisMatch extends AbstractPlay implements Match {
         maxSets = max_sets;
         this.gameType = gameType;
         this.setType = setType;
-        this.matchType = matchType;
         this.plays = new ArrayList<Play>();
         this.players = players;
         thisMatch = this;
     }
-
-    TennisMatch(List<Player> players, List<Play> plays, int max_sets, PlayType gameType, PlayType setType, PlayType matchType) {
-        maxSets = max_sets;
-        this.gameType = gameType;
-        this.setType = setType;
-        this.matchType = matchType;
-        this.plays = plays;
-        this.players = players;
-        thisMatch = this;
-    }
-
-
 
     public void score(int playerIndex) throws GameException {
         synchronized(monitor)
