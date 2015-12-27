@@ -19,13 +19,11 @@ public class AdvantageSet extends AbstractPlay {
 
     public AdvantageSet(){
         this.plays = new ArrayList<Play>();
-        //this.setSubPlayType(BaseMatch.getThisMatch().getGameType());
     }
 
     public AdvantageSet(List<Play> plays) {
         super();
         this.plays = plays;
-        //this.setSubPlayType(BaseMatch.getThisMatch().getGameType());
     }
 
 

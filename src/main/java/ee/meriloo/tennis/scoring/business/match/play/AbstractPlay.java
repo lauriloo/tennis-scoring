@@ -13,7 +13,6 @@ public abstract class AbstractPlay implements Play {
     private int firstPlayerScore;
     private int secondPlayerScore;
     protected List<Play> plays;
-    //private PlayType subPlayType;
 
 
     protected void incrementScore(int index) throws GameException {
@@ -66,11 +65,5 @@ public abstract class AbstractPlay implements Play {
         return plays;
     }
 
-    /*protected PlayType getSubPlayType() {
-        return subPlayType;
-    }
 
-    protected void setSubPlayType(PlayType subPlayType) {
-        this.subPlayType = subPlayType;
-    }*/
 }

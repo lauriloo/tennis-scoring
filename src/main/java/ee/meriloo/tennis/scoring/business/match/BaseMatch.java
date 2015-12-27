@@ -29,7 +29,6 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         this.plays = new ArrayList<Play>();
         this.players = players;
         thisMatch = this;
-        //this.setSubPlayType(setType);
     }
 
     BaseMatch(List<Player> players, List<Play> plays, PlayType gameType, PlayType setType, PlayType matchType) {
@@ -39,7 +38,6 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         this.plays = plays;
         this.players = players;
         thisMatch = this;
-        //this.setSubPlayType(setType);
     }
 
     public void score(int playerIndex) throws GameException {
