@@ -6,6 +6,7 @@ import ee.meriloo.tennis.scoring.business.match.play.AbstractPlay;
 import ee.meriloo.tennis.scoring.business.match.play.Play;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Lauri on 20.12.2015.
@@ -15,9 +16,13 @@ public class AdvantageSet extends AbstractPlay {
     public static final int MIN_GAMES_TO_WIN = 6;
     public static final int MIN_GAMES_LEADE_TO_WIN = 2;
 
-
-   public AdvantageSet(){
+    public AdvantageSet(){
         this.plays = new ArrayList<Play>();
+    }
+
+    public AdvantageSet(List<Play> plays) {
+        super();
+        this.plays = plays;
     }
 
 

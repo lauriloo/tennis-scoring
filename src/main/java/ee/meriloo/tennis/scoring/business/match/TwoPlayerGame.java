@@ -11,9 +11,7 @@ public class TwoPlayerGame extends AbstractPlay {
     public static final int MIN_POINTS_TO_WIN = 4;
     public static final int MIN_POINTS_LEADE_TO_WIN = 2;
 
-    public TwoPlayerGame() {
-        this.plays = null;
-    }
+
 
 
     public void score(int playerIndex) throws GameException {

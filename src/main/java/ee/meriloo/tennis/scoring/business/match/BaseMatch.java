@@ -22,6 +22,12 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         thisMatch = this;
     }
 
+    BaseMatch(List<Player> players, List<Play> plays) {
+        this.plays = plays;
+        this.players = players;
+        thisMatch = this;
+    }
+
     public void score(int playerIndex) throws GameException {
         synchronized(monitor)
         {

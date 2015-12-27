@@ -15,7 +15,6 @@ public interface Match extends Play {
 
     List<Player> getPlayers();
 
-    //List<Play> getPlays();
 
 
 }
