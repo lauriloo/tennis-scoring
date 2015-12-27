@@ -92,13 +92,13 @@ public class ScoreboardData {
 
     private String scoreBasicConvert(int score){
         if(score == 0){
-            return "0";
+            return StringConstants.ZERO;
         } else if(score == 1){
-            return "15";
+            return StringConstants.FIFTEEN;
         } else if(score == 2){
-            return "30";
+            return StringConstants.THIRTY;
         } else {
-            return "40";
+            return StringConstants.FORTY;
         }
     }
 }

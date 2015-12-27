@@ -24,5 +24,9 @@ public class StringConstants {
     public static final String SECONDPLAYERSETSWON = "secondPlayerSetsWon";
     public static final String FIRSTPLAYERNAME = "firstPlayerName";
     public static final String SECONDPLAYERNAME = "secondPlayerName";
+    public static final String ZERO = "0";
+    public static final String FIFTEEN = "15";
+    public static final String THIRTY = "30";
+    public static final String FORTY = "40";
 
 }
