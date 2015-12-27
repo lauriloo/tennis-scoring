@@ -1,4 +1,4 @@
-package ee.meriloo.tennis.scoring.business.player;
+package ee.meriloo.tennis.scoring.business.match;
 
 /**
  * Created by Lauri on 20.12.2015.

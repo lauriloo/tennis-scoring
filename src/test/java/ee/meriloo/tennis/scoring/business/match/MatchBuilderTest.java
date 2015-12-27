@@ -1,6 +1,5 @@
 package ee.meriloo.tennis.scoring.business.match;
 
-import ee.meriloo.tennis.scoring.business.player.Player;
 import ee.meriloo.tennis.scoring.output.DisplayDevice;
 import ee.meriloo.tennis.scoring.output.SimpleDisplayDevice;
 import org.junit.Test;

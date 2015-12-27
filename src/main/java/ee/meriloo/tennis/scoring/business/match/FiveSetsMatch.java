@@ -1,7 +1,5 @@
 package ee.meriloo.tennis.scoring.business.match;
 
-import ee.meriloo.tennis.scoring.business.player.Player;
-
 import java.util.List;
 
 /**

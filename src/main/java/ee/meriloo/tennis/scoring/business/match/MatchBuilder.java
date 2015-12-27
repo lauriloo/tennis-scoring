@@ -1,7 +1,6 @@
 package ee.meriloo.tennis.scoring.business.match;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
-import ee.meriloo.tennis.scoring.business.player.Player;
 
 import java.util.LinkedList;
 import java.util.List;

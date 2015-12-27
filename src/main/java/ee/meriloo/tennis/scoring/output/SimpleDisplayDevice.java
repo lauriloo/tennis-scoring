@@ -1,10 +1,9 @@
 package ee.meriloo.tennis.scoring.output;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
-import ee.meriloo.tennis.scoring.business.game.abstractgame.Game;
+import ee.meriloo.tennis.scoring.business.play.Play;
 import ee.meriloo.tennis.scoring.business.match.BaseMatch;
 import ee.meriloo.tennis.scoring.business.match.Match;
-import ee.meriloo.tennis.scoring.business.set.Set;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -100,10 +99,10 @@ public class SimpleDisplayDevice implements DisplayDevice {
             firstPlayerName = match.getPlayers().get(0).getName();
             secondPlayerName = match.getPlayers().get(1).getName();
 
-            if (match.getSets().size() > 0) {
-                Set lastSet = match.getSets().get(match.getSets().size() - 1);
-                if (lastSet.getGames().size() > 0) {
-                    Game lastGame = lastSet.getGames().get(lastSet.getGames().size() - 1);
+            if (match.getPlays().size() > 0) {
+                Play lastSet = match.getPlays().get(match.getPlays().size() - 1);
+                if (lastSet.getPlays().size() > 0) {
+                    Play lastGame = lastSet.getPlays().get(lastSet.getPlays().size() - 1);
                     firstScore = lastGame.getScore(0);
                     secondScore = lastGame.getScore(1);
                     //firstPlayerGamesWon = lastSet.getScore(0);

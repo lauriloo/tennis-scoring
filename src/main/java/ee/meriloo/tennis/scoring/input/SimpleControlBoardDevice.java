@@ -3,7 +3,7 @@ package ee.meriloo.tennis.scoring.input;
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 import ee.meriloo.tennis.scoring.business.match.Match;
 import ee.meriloo.tennis.scoring.business.match.MatchBuilder;
-import ee.meriloo.tennis.scoring.business.player.Player;
+import ee.meriloo.tennis.scoring.business.match.Player;
 import org.apache.commons.lang3.StringUtils;
 
 /**

@@ -1,16 +1,19 @@
-package ee.meriloo.tennis.scoring.business.game.abstractgame;
+package ee.meriloo.tennis.scoring.business.play;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
+import java.util.List;
 
 /**
  * Created by Lauri on 26.12.2015.
  */
-public abstract class AbstractGame implements Game {
+public abstract class AbstractPlay implements Play {
 
     private int firstPlayerScore;
     private int secondPlayerScore;
+    protected List<Play> plays;
 
-    public void incrementScore(int index) throws GameException {
+
+    protected void incrementScore(int index) throws GameException {
         if(!hasEnded()){
             if(index == 0){
                 ++firstPlayerScore;
@@ -54,4 +57,11 @@ public abstract class AbstractGame implements Game {
             throw new GameException();
         }
     }
+
+
+    public List<Play> getPlays() {
+        return plays;
+    }
+
+
 }
