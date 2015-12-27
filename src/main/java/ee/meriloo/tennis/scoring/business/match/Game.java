@@ -6,7 +6,7 @@ import ee.meriloo.tennis.scoring.business.match.play.AbstractPlay;
 /**
  * Created by Lauri on 20.12.2015.
  */
-public class TwoPlayerGame extends AbstractPlay {
+public class Game extends AbstractPlay {
 
     public static final int MIN_POINTS_TO_WIN = 4;
     public static final int MIN_POINTS_LEADE_TO_WIN = 2;

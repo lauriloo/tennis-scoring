@@ -16,25 +16,26 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
     private static Match thisMatch;
     protected final List<Player> players;
     protected static Object monitor = new Object();
-    private PlayType playType = PlayType.ADVANTAGESET;
 
     BaseMatch(List<Player> players) {
         this.plays = new ArrayList<Play>();
         this.players = players;
         thisMatch = this;
+        this.setSubPlayType(PlayType.ADVANTAGESET);
     }
 
     BaseMatch(List<Player> players, List<Play> plays) {
         this.plays = plays;
         this.players = players;
         thisMatch = this;
+        this.setSubPlayType(PlayType.ADVANTAGESET);
     }
 
     public void score(int playerIndex) throws GameException {
         synchronized(monitor)
         {
             if(plays.size() == 0 || plays.get(plays.size()-1).hasEnded()){
-                plays.add(PlayBuilder.build(playType));
+                plays.add(PlayBuilder.build(getSubPlayType()));
             }
             plays.get(plays.size()-1).score(playerIndex);
             if(plays.get(plays.size()-1).hasEnded()){

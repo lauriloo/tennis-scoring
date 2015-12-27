@@ -5,6 +5,6 @@ package ee.meriloo.tennis.scoring.business.match;
  */
 public enum PlayType {
 
-    TWOPLAYERGAME, ADVANTAGESET;
+    GAME, ADVANTAGESET;
 
 }

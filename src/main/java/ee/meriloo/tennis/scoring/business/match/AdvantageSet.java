@@ -16,21 +16,22 @@ public class AdvantageSet extends AbstractPlay {
 
     public static final int MIN_GAMES_TO_WIN = 6;
     public static final int MIN_GAMES_LEADE_TO_WIN = 2;
-    private PlayType playType = PlayType.TWOPLAYERGAME;
 
     public AdvantageSet(){
         this.plays = new ArrayList<Play>();
+        this.setSubPlayType(PlayType.GAME);
     }
 
     public AdvantageSet(List<Play> plays) {
         super();
         this.plays = plays;
+        this.setSubPlayType(PlayType.GAME);
     }
 
 
     public void score(int playerIndex) throws GameException {
         if(plays.size() == 0 || plays.get(plays.size()-1).hasEnded()){
-            plays.add(PlayBuilder.build(playType));
+            plays.add(PlayBuilder.build(getSubPlayType()));
         }
         plays.get(plays.size()-1).score(playerIndex);
         if(plays.get(plays.size()-1).hasEnded()){
