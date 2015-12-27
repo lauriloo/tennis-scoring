@@ -15,6 +15,12 @@ public interface Match extends Play {
 
     List<Player> getPlayers();
 
+    PlayType getGameType();
+
+    PlayType getSetType();
+
+    PlayType getMatchType();
+
 
 
 }

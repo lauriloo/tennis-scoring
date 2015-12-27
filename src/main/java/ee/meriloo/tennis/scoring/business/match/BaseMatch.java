@@ -15,9 +15,11 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
 
     private static Match thisMatch;
     protected final List<Player> players;
+
     private final PlayType gameType;
     private final PlayType setType;
     private final PlayType matchType;
+
     protected static Object monitor = new Object();
 
     BaseMatch(List<Player> players, PlayType gameType, PlayType setType, PlayType matchType) {
@@ -27,7 +29,7 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         this.plays = new ArrayList<Play>();
         this.players = players;
         thisMatch = this;
-        this.setSubPlayType(PlayType.ADVANTAGESET);
+        //this.setSubPlayType(setType);
     }
 
     BaseMatch(List<Player> players, List<Play> plays, PlayType gameType, PlayType setType, PlayType matchType) {
@@ -37,14 +39,14 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         this.plays = plays;
         this.players = players;
         thisMatch = this;
-        this.setSubPlayType(PlayType.ADVANTAGESET);
+        //this.setSubPlayType(setType);
     }
 
     public void score(int playerIndex) throws GameException {
         synchronized(monitor)
         {
             if(plays.size() == 0 || plays.get(plays.size()-1).hasEnded()){
-                plays.add(PlayBuilder.build(getSubPlayType()));
+                plays.add(PlayBuilder.build(BaseMatch.getThisMatch().getSetType()));
             }
             plays.get(plays.size()-1).score(playerIndex);
             if(plays.get(plays.size()-1).hasEnded()){
@@ -113,5 +115,15 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         }
     }
 
+    public PlayType getGameType() {
+        return gameType;
+    }
 
+    public PlayType getSetType() {
+        return setType;
+    }
+
+    public PlayType getMatchType() {
+        return matchType;
+    }
 }
