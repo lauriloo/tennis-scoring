@@ -15,16 +15,25 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
 
     private static Match thisMatch;
     protected final List<Player> players;
+    private final PlayType gameType;
+    private final PlayType setType;
+    private final PlayType matchType;
     protected static Object monitor = new Object();
 
-    BaseMatch(List<Player> players) {
+    BaseMatch(List<Player> players, PlayType gameType, PlayType setType, PlayType matchType) {
+        this.gameType = gameType;
+        this.setType = setType;
+        this.matchType = matchType;
         this.plays = new ArrayList<Play>();
         this.players = players;
         thisMatch = this;
         this.setSubPlayType(PlayType.ADVANTAGESET);
     }
 
-    BaseMatch(List<Player> players, List<Play> plays) {
+    BaseMatch(List<Player> players, List<Play> plays, PlayType gameType, PlayType setType, PlayType matchType) {
+        this.gameType = gameType;
+        this.setType = setType;
+        this.matchType = matchType;
         this.plays = plays;
         this.players = players;
         thisMatch = this;

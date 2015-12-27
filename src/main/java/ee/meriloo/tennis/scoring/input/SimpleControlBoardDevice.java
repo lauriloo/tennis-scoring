@@ -3,6 +3,7 @@ package ee.meriloo.tennis.scoring.input;
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 import ee.meriloo.tennis.scoring.business.match.Match;
 import ee.meriloo.tennis.scoring.business.match.MatchBuilder;
+import ee.meriloo.tennis.scoring.business.match.PlayType;
 import ee.meriloo.tennis.scoring.business.match.Player;
 import org.apache.commons.lang3.StringUtils;
 
@@ -25,8 +26,9 @@ public class SimpleControlBoardDevice implements ControlBoardDevice {
 
     public void start() throws GameException {
         if(canStartNewMach){
-            this.match = MatchBuilder.buildBestOfThreeMatch();
-            //this.match = MatchBuilder.buildFiveSetsMatch();
+            //MatchBuilder.setMatchType(PlayType.FIVESETSMATCH);
+            MatchBuilder.setMatchType(PlayType.BESTOFTHREEMATCH);
+            this.match = MatchBuilder.build();
             canStartNewMach = false;
         } else {
             throw new GameException();

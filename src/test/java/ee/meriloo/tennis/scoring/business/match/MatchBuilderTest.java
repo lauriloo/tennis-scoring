@@ -23,7 +23,7 @@ public class MatchBuilderTest {
 
         MatchBuilder.addPlayer(new Player("AAA"));
         MatchBuilder.addPlayer(new Player("BBB"));
-        Match match = MatchBuilder.buildBestOfThreeMatch();
+        Match match = MatchBuilder.build();
         assertEquals(match.getPlayers().get(0).getName(),"AAA");
         assertEquals(match.getPlayers().get(1).getName(),"BBB");
 

@@ -11,8 +11,8 @@ public class BestOfThreeMatch extends BaseMatch {
     private static final int MIN_SETS_LEADE_TO_WIN = 2;
 
 
-    BestOfThreeMatch(List<Player> players) {
-        super(players);
+    BestOfThreeMatch(List<Player> players, PlayType gameType, PlayType setType, PlayType matchType) {
+        super(players, gameType, setType, matchType);
     }
 
     public boolean hasEnded() {

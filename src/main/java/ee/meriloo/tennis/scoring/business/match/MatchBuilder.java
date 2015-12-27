@@ -12,6 +12,9 @@ public class MatchBuilder {
 
     private static final int MAX_PLAYERS = 2;
     private static List<Player> players = new LinkedList<Player>();
+    private static  PlayType gameType = PlayType.GAME;
+    private static  PlayType setType = PlayType.ADVANTAGESET;
+    private static  PlayType matchType = PlayType.BESTOFTHREEMATCH;
 
     public static void addPlayer(Player player) throws GameException {
         if(players.size() < MAX_PLAYERS){
@@ -21,9 +24,30 @@ public class MatchBuilder {
         }
     }
 
-    public static BestOfThreeMatch buildBestOfThreeMatch() throws GameException {
-        if(players.size() == MAX_PLAYERS){
-            BestOfThreeMatch newMatch = new BestOfThreeMatch(players);
+    public static Match build() throws GameException {
+        if (players.size() == MAX_PLAYERS) {
+            Match newMatch;
+
+            if (matchType == PlayType.BESTOFTHREEMATCH) {
+                newMatch = new BestOfThreeMatch(players, gameType, setType, matchType);
+                players = new LinkedList<Player>();
+                return newMatch;
+            } else if (matchType == PlayType.FIVESETSMATCH) {
+                newMatch = new FiveSetsMatch(players, gameType, setType, matchType);
+                players = new LinkedList<Player>();
+                return newMatch;
+
+            }
+        }
+
+        throw new GameException();
+    }
+
+
+
+    public static FiveSetsMatch buildFiveSetsMatch() throws GameException {
+        if(matchType == PlayType.BESTOFTHREEMATCH){
+            FiveSetsMatch newMatch = new FiveSetsMatch(players, gameType, setType, matchType);
             players = new LinkedList<Player>();
             return newMatch;
         } else {
@@ -32,14 +56,15 @@ public class MatchBuilder {
 
     }
 
-    public static FiveSetsMatch buildFiveSetsMatch() throws GameException {
-        if(players.size() == MAX_PLAYERS){
-            FiveSetsMatch newMatch = new FiveSetsMatch(players);
-            players = new LinkedList<Player>();
-            return newMatch;
-        } else {
-            throw new GameException();
-        }
+    public static void setSetType(PlayType setType) {
+        MatchBuilder.setType = setType;
+    }
 
+    public static void setGameType(PlayType gameType) {
+        MatchBuilder.gameType = gameType;
+    }
+
+    public static void setMatchType(PlayType matchType) {
+        MatchBuilder.matchType = matchType;
     }
 }

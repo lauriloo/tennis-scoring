@@ -10,8 +10,8 @@ public class FiveSetsMatch extends BaseMatch {
     private static final int MIN_SETS_TO_WIN = 3;
 
 
-    FiveSetsMatch(List<Player> players) {
-        super(players);
+    FiveSetsMatch(List<Player> players, PlayType gameType, PlayType setType, PlayType matchType) {
+        super(players, gameType, setType, matchType);
     }
 
     public boolean hasEnded() {
