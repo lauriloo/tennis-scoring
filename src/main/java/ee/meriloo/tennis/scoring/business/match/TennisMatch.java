@@ -11,10 +11,11 @@ import java.util.List;
 /**
  * Created by Lauri on 20.12.2015.
  */
-public abstract class BaseMatch extends AbstractPlay implements Match {
+public class TennisMatch extends AbstractPlay implements Match {
 
     private static Match thisMatch;
     protected final List<Player> players;
+    private final int maxSets;
 
     private final PlayType gameType;
     private final PlayType setType;
@@ -22,7 +23,8 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
 
     protected static Object monitor = new Object();
 
-    BaseMatch(List<Player> players, PlayType gameType, PlayType setType, PlayType matchType) {
+    TennisMatch(List<Player> players, int max_sets, PlayType gameType, PlayType setType, PlayType matchType) {
+        maxSets = max_sets;
         this.gameType = gameType;
         this.setType = setType;
         this.matchType = matchType;
@@ -31,7 +33,8 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         thisMatch = this;
     }
 
-    BaseMatch(List<Player> players, List<Play> plays, PlayType gameType, PlayType setType, PlayType matchType) {
+    TennisMatch(List<Player> players, List<Play> plays, int max_sets, PlayType gameType, PlayType setType, PlayType matchType) {
+        maxSets = max_sets;
         this.gameType = gameType;
         this.setType = setType;
         this.matchType = matchType;
@@ -40,11 +43,13 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         thisMatch = this;
     }
 
+
+
     public void score(int playerIndex) throws GameException {
         synchronized(monitor)
         {
             if(plays.size() == 0 || plays.get(plays.size()-1).hasEnded()){
-                plays.add(PlayBuilder.build(BaseMatch.getThisMatch().getSetType()));
+                plays.add(PlayBuilder.build(TennisMatch.getThisMatch().getSetType()));
             }
             plays.get(plays.size()-1).score(playerIndex);
             if(plays.get(plays.size()-1).hasEnded()){
@@ -123,5 +128,22 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
 
     public PlayType getMatchType() {
         return matchType;
+    }
+
+
+
+    public boolean hasEnded() {
+        synchronized(monitor)
+        {
+            if (Math.abs((getFirstPlayerScore() - getSecondPlayerScore())) > maxSets /2){
+                return true;
+            } else if ((getFirstPlayerScore() + getSecondPlayerScore()) == maxSets){
+                return true;
+            } else if ((getFirstPlayerScore() > maxSets /2) || (getSecondPlayerScore() > maxSets /2)){
+                return true;
+            }
+            return false;
+        }
+
     }
 }

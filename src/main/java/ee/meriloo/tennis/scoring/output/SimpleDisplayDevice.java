@@ -2,7 +2,7 @@ package ee.meriloo.tennis.scoring.output;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 import ee.meriloo.tennis.scoring.business.match.play.Play;
-import ee.meriloo.tennis.scoring.business.match.BaseMatch;
+import ee.meriloo.tennis.scoring.business.match.TennisMatch;
 import ee.meriloo.tennis.scoring.business.match.Match;
 import org.apache.commons.lang3.StringUtils;
 
@@ -36,15 +36,15 @@ public class SimpleDisplayDevice implements DisplayDevice {
 
 
     public String getScoreBoard() throws GameException {
-        return composeScoreBoard(BaseMatch.getThisMatch());
+        return composeScoreBoard(TennisMatch.getThisMatch());
     }
 
     public boolean isFinished() {
-        return BaseMatch.getThisMatch().hasEnded();
+        return TennisMatch.getThisMatch().hasEnded();
     }
 
     public String getWinner() throws GameException {
-        return BaseMatch.getThisMatch().getWinner();
+        return TennisMatch.getThisMatch().getWinner();
     }
 
 

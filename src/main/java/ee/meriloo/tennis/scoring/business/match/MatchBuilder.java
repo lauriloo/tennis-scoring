@@ -29,11 +29,11 @@ public class MatchBuilder {
             Match newMatch;
 
             if (matchType == PlayType.BESTOFTHREEMATCH) {
-                newMatch = new BestOfThreeMatch(players, gameType, setType, matchType);
+                newMatch = new TennisMatch(players, 3, gameType, setType, matchType);
                 players = new LinkedList<Player>();
                 return newMatch;
             } else if (matchType == PlayType.FIVESETSMATCH) {
-                newMatch = new FiveSetsMatch(players, gameType, setType, matchType);
+                newMatch = new TennisMatch(players, 5, gameType, setType, matchType);
                 players = new LinkedList<Player>();
                 return newMatch;
 
@@ -43,18 +43,6 @@ public class MatchBuilder {
         throw new GameException();
     }
 
-
-
-    public static FiveSetsMatch buildFiveSetsMatch() throws GameException {
-        if(matchType == PlayType.BESTOFTHREEMATCH){
-            FiveSetsMatch newMatch = new FiveSetsMatch(players, gameType, setType, matchType);
-            players = new LinkedList<Player>();
-            return newMatch;
-        } else {
-            throw new GameException();
-        }
-
-    }
 
     public static void setSetType(PlayType setType) {
         MatchBuilder.setType = setType;
@@ -67,4 +55,6 @@ public class MatchBuilder {
     public static void setMatchType(PlayType matchType) {
         MatchBuilder.matchType = matchType;
     }
+
+
 }

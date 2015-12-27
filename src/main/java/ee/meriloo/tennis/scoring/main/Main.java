@@ -1,8 +1,6 @@
 package ee.meriloo.tennis.scoring.main;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
-import ee.meriloo.tennis.scoring.business.match.BaseMatch;
-import ee.meriloo.tennis.scoring.business.match.Match;
 import ee.meriloo.tennis.scoring.input.ControlBoardDevice;
 import ee.meriloo.tennis.scoring.input.SimpleControlBoardDevice;
 import ee.meriloo.tennis.scoring.output.DisplayDevice;

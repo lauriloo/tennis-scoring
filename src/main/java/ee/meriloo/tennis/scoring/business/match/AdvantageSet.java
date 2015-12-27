@@ -29,7 +29,7 @@ public class AdvantageSet extends AbstractPlay {
 
     public void score(int playerIndex) throws GameException {
         if(plays.size() == 0 || plays.get(plays.size()-1).hasEnded()){
-            plays.add(PlayBuilder.build(BaseMatch.getThisMatch().getGameType()));
+            plays.add(PlayBuilder.build(TennisMatch.getThisMatch().getGameType()));
         }
         plays.get(plays.size()-1).score(playerIndex);
         if(plays.get(plays.size()-1).hasEnded()){
