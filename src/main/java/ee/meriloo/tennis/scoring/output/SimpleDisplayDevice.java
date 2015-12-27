@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class SimpleDisplayDevice implements DisplayDevice {
 
-    public static final String ADVANTAGE = "AD";
+    /*public static final String ADVANTAGE = "AD";
     public static final String DASH = "-";
     public static final String SPACE = " ";
     public static final String PIPE = "|";
@@ -32,7 +32,7 @@ public class SimpleDisplayDevice implements DisplayDevice {
     public static final String FIRSTPLAYERSETSWON = "firstPlayerSetsWon";
     public static final String SECONDPLAYERSETSWON = "secondPlayerSetsWon";
     public static final String FIRSTPLAYERNAME = "firstPlayerName";
-    public static final String SECONDPLAYERNAME = "secondPlayerName";
+    public static final String SECONDPLAYERNAME = "secondPlayerName";*/
 
 
     public String getScoreBoard() throws GameException {
@@ -57,25 +57,25 @@ public class SimpleDisplayDevice implements DisplayDevice {
         final int gamesWonFieldLength = 11;
         final int setsWonFieldLength = 10;
 
-        output.append(PIPE + SPACE +StringUtils.center(NAME, nameFieldLength));
-        output.append(PIPE + StringUtils.center(SCORE, scoreFieldLength));
-        output.append(PIPE + StringUtils.center(GAMESWON, gamesWonFieldLength));
-        output.append(PIPE + StringUtils.center(SETSWON, setsWonFieldLength)+ PIPE + LINEBREAK);
+        output.append(StringConstants.PIPE + StringConstants.SPACE +StringUtils.center(StringConstants.NAME, nameFieldLength));
+        output.append(StringConstants.PIPE + StringUtils.center(StringConstants.SCORE, scoreFieldLength));
+        output.append(StringConstants.PIPE + StringUtils.center(StringConstants.GAMESWON, gamesWonFieldLength));
+        output.append(StringConstants.PIPE + StringUtils.center(StringConstants.SETSWON, setsWonFieldLength)+ StringConstants.PIPE + StringConstants.LINEBREAK);
 
 
 
         if(match != null){
             dataMap = getDisplayData(match);
 
-            output.append(PIPE + SPACE + StringUtils.rightPad(FIRSTPLAYER + SPACE + dataMap.get(FIRSTPLAYERNAME), nameFieldLength));
-            output.append(PIPE +StringUtils.center(dataMap.get(FIRSTPLAYERSCORE), scoreFieldLength));
-            output.append(PIPE +StringUtils.center(dataMap.get(FIRSTPLAYERGAMESWON), gamesWonFieldLength));
-            output.append(PIPE +StringUtils.center(dataMap.get(FIRSTPLAYERSETSWON), setsWonFieldLength)+ PIPE + LINEBREAK);
+            output.append(StringConstants.PIPE + StringConstants.SPACE + StringUtils.rightPad(StringConstants.FIRSTPLAYER + StringConstants.SPACE + dataMap.get(StringConstants.FIRSTPLAYERNAME), nameFieldLength));
+            output.append(StringConstants.PIPE +StringUtils.center(dataMap.get(StringConstants.FIRSTPLAYERSCORE), scoreFieldLength));
+            output.append(StringConstants.PIPE +StringUtils.center(dataMap.get(StringConstants.FIRSTPLAYERGAMESWON), gamesWonFieldLength));
+            output.append(StringConstants.PIPE +StringUtils.center(dataMap.get(StringConstants.FIRSTPLAYERSETSWON), setsWonFieldLength)+ StringConstants.PIPE + StringConstants.LINEBREAK);
 
-            output.append(PIPE + SPACE + StringUtils.rightPad(SECONDPLAYER + SPACE + dataMap.get(SECONDPLAYERNAME), nameFieldLength));
-            output.append(PIPE + StringUtils.center(dataMap.get(SECONDPLAYERSCORE), scoreFieldLength));
-            output.append(PIPE + StringUtils.center(dataMap.get(SECONDPLAYERGAMESWON), gamesWonFieldLength));
-            output.append(PIPE + StringUtils.center(dataMap.get(SECONDPLAYERSETSWON), setsWonFieldLength)+ PIPE + LINEBREAK);
+            output.append(StringConstants.PIPE + StringConstants.SPACE + StringUtils.rightPad(StringConstants.SECONDPLAYER + StringConstants.SPACE + dataMap.get(StringConstants.SECONDPLAYERNAME), nameFieldLength));
+            output.append(StringConstants.PIPE + StringUtils.center(dataMap.get(StringConstants.SECONDPLAYERSCORE), scoreFieldLength));
+            output.append(StringConstants.PIPE + StringUtils.center(dataMap.get(StringConstants.SECONDPLAYERGAMESWON), gamesWonFieldLength));
+            output.append(StringConstants.PIPE + StringUtils.center(dataMap.get(StringConstants.SECONDPLAYERSETSWON), setsWonFieldLength)+ StringConstants.PIPE + StringConstants.LINEBREAK);
         }
 
         return output.toString();
@@ -119,12 +119,12 @@ public class SimpleDisplayDevice implements DisplayDevice {
         }
 
         dataMap = scoreCoverter(firstScore,secondScore);
-        dataMap.put(FIRSTPLAYERGAMESWON, Integer.toString(firstPlayerGamesWon));
-        dataMap.put(SECONDPLAYERGAMESWON, Integer.toString(secondPlayerGamesWon));
-        dataMap.put(FIRSTPLAYERSETSWON, Integer.toString(firstPlayerSetsWon));
-        dataMap.put(SECONDPLAYERSETSWON, Integer.toString(secondPlayerSetsWon));
-        dataMap.put(FIRSTPLAYERNAME, firstPlayerName);
-        dataMap.put(SECONDPLAYERNAME, secondPlayerName);
+        dataMap.put(StringConstants.FIRSTPLAYERGAMESWON, Integer.toString(firstPlayerGamesWon));
+        dataMap.put(StringConstants.SECONDPLAYERGAMESWON, Integer.toString(secondPlayerGamesWon));
+        dataMap.put(StringConstants.FIRSTPLAYERSETSWON, Integer.toString(firstPlayerSetsWon));
+        dataMap.put(StringConstants.SECONDPLAYERSETSWON, Integer.toString(secondPlayerSetsWon));
+        dataMap.put(StringConstants.FIRSTPLAYERNAME, firstPlayerName);
+        dataMap.put(StringConstants.SECONDPLAYERNAME, secondPlayerName);
 
         return dataMap;
     }
@@ -142,11 +142,11 @@ public class SimpleDisplayDevice implements DisplayDevice {
             score2 = scoreBasicConvert(3);
         } else if((firstScore >= 4 || secondScore >= 4) && (Math.abs(firstScore - secondScore) == 1)){
             if(firstScore > secondScore){
-                score1 = ADVANTAGE;
-                score2 = DASH;
+                score1 = StringConstants.ADVANTAGE;
+                score2 = StringConstants.DASH;
             } else {
-                score2 = ADVANTAGE;
-                score1 = DASH;
+                score2 = StringConstants.ADVANTAGE;
+                score1 = StringConstants.DASH;
             }
         } else if((firstScore >= 4 || secondScore >= 4) && (Math.abs(firstScore - secondScore) >= 2)){
             score1 = "";
@@ -155,8 +155,8 @@ public class SimpleDisplayDevice implements DisplayDevice {
             throw new GameException();
         }
 
-        scores.put(FIRSTPLAYERSCORE, score1);
-        scores.put(SECONDPLAYERSCORE, score2);
+        scores.put(StringConstants.FIRSTPLAYERSCORE, score1);
+        scores.put(StringConstants.SECONDPLAYERSCORE, score2);
         return scores;
     }
 
