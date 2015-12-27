@@ -15,7 +15,7 @@ public class ConsoleScoreBoard {
 
     DisplayData displayData = new DisplayData();
 
-    public String composeScoreBoard(Match match) throws GameException {
+    public String formatScoreBoardData(Match match) throws GameException {
         StringBuilder output = new StringBuilder();
         Map<String,String> dataMap;
 

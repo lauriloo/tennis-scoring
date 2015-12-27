@@ -13,7 +13,7 @@ public class SimpleDisplayDevice implements DisplayDevice {
 
 
     public String getScoreBoard() throws GameException {
-        return consoleScoreBoard.composeScoreBoard(TennisMatch.getThisMatch());
+        return consoleScoreBoard.formatScoreBoardData(TennisMatch.getThisMatch());
     }
 
     public boolean isFinished() {
