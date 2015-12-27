@@ -12,8 +12,8 @@ public class StringConstants {
     public static final String LINEBREAK = "\n";
     public static final String NAME = "Name";
     public static final String SCORE = "Score";
-    public static final String GAMESWON = "Games won";
-    public static final String SETSWON = "Sets won";
+    public static final String GAMESWON = "Games";
+    public static final String SETSWON = "Sets";
     public static final String FIRSTPLAYER = "Player 0";
     public static final String SECONDPLAYER = "Player 1";
     public static final String FIRSTPLAYERSCORE = "firstPlayerScore";
