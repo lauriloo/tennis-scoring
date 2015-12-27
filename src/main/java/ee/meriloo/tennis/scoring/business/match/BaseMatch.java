@@ -3,6 +3,7 @@ package ee.meriloo.tennis.scoring.business.match;
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 import ee.meriloo.tennis.scoring.business.match.play.AbstractPlay;
 import ee.meriloo.tennis.scoring.business.match.play.Play;
+import ee.meriloo.tennis.scoring.business.match.play.PlayBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
     private static Match thisMatch;
     protected final List<Player> players;
     protected static Object monitor = new Object();
+    private PlayType playType = PlayType.ADVANTAGESET;
 
     BaseMatch(List<Player> players) {
         this.plays = new ArrayList<Play>();
@@ -32,7 +34,7 @@ public abstract class BaseMatch extends AbstractPlay implements Match {
         synchronized(monitor)
         {
             if(plays.size() == 0 || plays.get(plays.size()-1).hasEnded()){
-                plays.add(new AdvantageSet());
+                plays.add(PlayBuilder.build(playType));
             }
             plays.get(plays.size()-1).score(playerIndex);
             if(plays.get(plays.size()-1).hasEnded()){

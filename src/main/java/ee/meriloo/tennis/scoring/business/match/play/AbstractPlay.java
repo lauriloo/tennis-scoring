@@ -13,6 +13,7 @@ public abstract class AbstractPlay implements Play {
     protected List<Play> plays;
 
 
+
     protected void incrementScore(int index) throws GameException {
         if(!hasEnded()){
             if(index == 0){

@@ -4,6 +4,7 @@ package ee.meriloo.tennis.scoring.business.match;
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 import ee.meriloo.tennis.scoring.business.match.play.AbstractPlay;
 import ee.meriloo.tennis.scoring.business.match.play.Play;
+import ee.meriloo.tennis.scoring.business.match.play.PlayBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class AdvantageSet extends AbstractPlay {
 
     public static final int MIN_GAMES_TO_WIN = 6;
     public static final int MIN_GAMES_LEADE_TO_WIN = 2;
+    private PlayType playType = PlayType.TWOPLAYERGAME;
 
     public AdvantageSet(){
         this.plays = new ArrayList<Play>();
@@ -28,7 +30,7 @@ public class AdvantageSet extends AbstractPlay {
 
     public void score(int playerIndex) throws GameException {
         if(plays.size() == 0 || plays.get(plays.size()-1).hasEnded()){
-            plays.add(new TwoPlayerGame());
+            plays.add(PlayBuilder.build(playType));
         }
         plays.get(plays.size()-1).score(playerIndex);
         if(plays.get(plays.size()-1).hasEnded()){
