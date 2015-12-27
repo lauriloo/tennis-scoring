@@ -21,10 +21,6 @@ public class AdvantageSet extends AbstractPlay {
         this.plays = new ArrayList<Play>();
     }
 
-    public AdvantageSet(List<Play> plays) {
-        super();
-        this.plays = plays;
-    }
 
 
     public void score(int playerIndex) throws GameException {
