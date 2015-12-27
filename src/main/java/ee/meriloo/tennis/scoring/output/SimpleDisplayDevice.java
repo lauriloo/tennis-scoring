@@ -105,8 +105,6 @@ public class SimpleDisplayDevice implements DisplayDevice {
                     Play lastGame = lastSet.getPlays().get(lastSet.getPlays().size() - 1);
                     firstScore = lastGame.getScore(0);
                     secondScore = lastGame.getScore(1);
-                    //firstPlayerGamesWon = lastSet.getScore(0);
-                    //secondPlayerGamesWon = lastSet.getScore(1);
                     if(lastSet.hasEnded()){
                         firstPlayerGamesWon = 0;
                         secondPlayerGamesWon = 0;

@@ -19,8 +19,6 @@ public interface Match extends Play {
 
     PlayType getSetType();
 
-    PlayType getMatchType();
-
 
 
 }

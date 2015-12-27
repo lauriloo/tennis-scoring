@@ -126,9 +126,7 @@ public class TennisMatch extends AbstractPlay implements Match {
         return setType;
     }
 
-    public PlayType getMatchType() {
-        return matchType;
-    }
+
 
 
 
