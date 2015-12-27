@@ -1,7 +1,7 @@
 package ee.meriloo.tennis.scoring.business.match;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
-import ee.meriloo.tennis.scoring.business.play.Play;
+import ee.meriloo.tennis.scoring.business.match.play.Play;
 
 import java.util.List;
 

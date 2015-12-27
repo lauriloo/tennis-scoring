@@ -1,7 +1,7 @@
 package ee.meriloo.tennis.scoring.output;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
-import ee.meriloo.tennis.scoring.business.play.Play;
+import ee.meriloo.tennis.scoring.business.match.play.Play;
 import ee.meriloo.tennis.scoring.business.match.BaseMatch;
 import ee.meriloo.tennis.scoring.business.match.Match;
 import org.apache.commons.lang3.StringUtils;

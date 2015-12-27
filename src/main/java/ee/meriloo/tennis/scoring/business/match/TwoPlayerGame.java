@@ -1,7 +1,7 @@
 package ee.meriloo.tennis.scoring.business.match;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
-import ee.meriloo.tennis.scoring.business.play.AbstractPlay;
+import ee.meriloo.tennis.scoring.business.match.play.AbstractPlay;
 
 /**
  * Created by Lauri on 20.12.2015.
