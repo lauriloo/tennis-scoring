@@ -1,4 +1,4 @@
-package ee.meriloo.tennis.scoring.output;
+package ee.meriloo.tennis.scoring.business.util;
 
 /**
  * Created by Lauri on 27.12.2015.

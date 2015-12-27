@@ -1,13 +1,8 @@
 package ee.meriloo.tennis.scoring.output;
 
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
-import ee.meriloo.tennis.scoring.business.match.play.Play;
 import ee.meriloo.tennis.scoring.business.match.TennisMatch;
-import ee.meriloo.tennis.scoring.business.match.Match;
-import org.apache.commons.lang3.StringUtils;
-
-import java.util.HashMap;
-import java.util.Map;
+import ee.meriloo.tennis.scoring.business.util.ConsoleScoreBoard;
 
 /**
  * Created by Lauri on 18.12.2015.

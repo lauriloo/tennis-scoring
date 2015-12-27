@@ -1,9 +1,9 @@
 package ee.meriloo.tennis.scoring.business.match;
 
-import ee.meriloo.tennis.scoring.output.DisplayData;
+import ee.meriloo.tennis.scoring.business.util.DisplayData;
 import ee.meriloo.tennis.scoring.output.DisplayDevice;
 import ee.meriloo.tennis.scoring.output.SimpleDisplayDevice;
-import ee.meriloo.tennis.scoring.output.StringConstants;
+import ee.meriloo.tennis.scoring.business.util.StringConstants;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

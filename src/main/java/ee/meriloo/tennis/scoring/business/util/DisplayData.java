@@ -1,5 +1,6 @@
-package ee.meriloo.tennis.scoring.output;
+package ee.meriloo.tennis.scoring.business.util;
 
+import ee.meriloo.tennis.scoring.business.util.StringConstants;
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 import ee.meriloo.tennis.scoring.business.match.Match;
 import ee.meriloo.tennis.scoring.business.match.play.Play;
