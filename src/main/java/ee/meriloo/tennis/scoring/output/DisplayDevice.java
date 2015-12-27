@@ -36,6 +36,6 @@ public interface DisplayDevice {
      */
     String getWinner() throws GameException;
 
-    Map<String, String> getDisplayData(Match match) throws GameException;
+    //Map<String, String> getDisplayData(Match match) throws GameException;
 
 }
