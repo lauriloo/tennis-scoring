@@ -1,7 +1,5 @@
 package ee.meriloo.tennis.scoring.business.util;
 
-import ee.meriloo.tennis.scoring.business.util.DisplayData;
-import ee.meriloo.tennis.scoring.business.util.StringConstants;
 import ee.meriloo.tennis.scoring.business.exceptions.GameException;
 import ee.meriloo.tennis.scoring.business.match.Match;
 import org.apache.commons.lang3.StringUtils;
@@ -13,7 +11,7 @@ import java.util.Map;
  */
 public class ConsoleScoreBoard {
 
-    DisplayData displayData = new DisplayData();
+    ScoreboardData scoreboardData = new ScoreboardData();
 
     public String formatScoreBoardData(Match match) throws GameException {
         StringBuilder output = new StringBuilder();
@@ -32,7 +30,7 @@ public class ConsoleScoreBoard {
 
 
         if(match != null){
-            dataMap = displayData.getDisplayData(match);
+            dataMap = scoreboardData.getDisplayData(match);
 
             output.append(StringConstants.PIPE + StringConstants.SPACE + StringUtils.rightPad(StringConstants.FIRSTPLAYER + StringConstants.SPACE + dataMap.get(StringConstants.FIRSTPLAYERNAME), nameFieldLength));
             output.append(StringConstants.PIPE +StringUtils.center(dataMap.get(StringConstants.FIRSTPLAYERSCORE), scoreFieldLength));

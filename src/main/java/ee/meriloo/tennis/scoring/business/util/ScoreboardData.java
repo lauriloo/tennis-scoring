@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by Lauri on 27.12.2015.
  */
-public class DisplayData {
+public class ScoreboardData {
 
     public Map<String, String> getDisplayData(Match match) throws GameException {
 
